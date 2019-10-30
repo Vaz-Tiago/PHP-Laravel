@@ -94,6 +94,23 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <div>
+                    <h2>Teste com formulários</h2>
+                    <form action="/contato" method="post">
+                        {{ csrf_field() }}
+                        <input type="text" name="nome" placeholder="Nome / POST" >
+                        <input type="submit" value="Enviar">
+                        
+                    </form>
+                    <br>
+                    <form action="/contato" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="_method" value="put">
+                        <input type="text" name="nome" placeholder="Nome / PUT" >
+                        <input type="submit" value="Enviar">
+                        
+                    </form>
+                </div>
             </div>
         </div>
     </body>
