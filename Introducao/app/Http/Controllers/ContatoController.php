@@ -11,7 +11,7 @@ class ContatoController extends Controller
 
         $contatos = [
             (object) ["Nome" => "Maria", "Telefone" => "123456789"],
-            (object) ["Nome" => "João", "Telefone" => "987654321"],
+            (object) ["Nome" => "João", "Telefone" => "987654321"]
         ];
         return view('Contato.index', compact('contatos')); //'Diretorio.Arquivo','parametro'
 
@@ -24,7 +24,7 @@ class ContatoController extends Controller
         //retorna tudo como array
         return $req->all();
     }
-
+    
     public function editar()
     {
         return 'Este é o método EDITAR';
