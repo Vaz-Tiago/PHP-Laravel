@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// Fazendo a chamada da model.
+use App\Contato;
+
 class ContatoController extends Controller
 {
     public function index()
@@ -13,8 +16,14 @@ class ContatoController extends Controller
             (object) ["Nome" => "Maria", "Telefone" => "123456789"],
             (object) ["Nome" => "João", "Telefone" => "987654321"]
         ];
-        return view('Contato.index', compact('contatos')); //'Diretorio.Arquivo','parametro'
 
+        //Recebendo dados do Model
+        $contato = new Contato();
+        $con = $contato->lista();
+
+        dd($con->Nome);
+
+        return view('Contato.index', compact('contatos')); //'Diretorio.Arquivo','parametro'
         //Com o compact pode ser passado varias listas, apenas separando por virgula
     }
 
