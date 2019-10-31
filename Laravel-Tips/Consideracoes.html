@@ -11,6 +11,20 @@
     <h5>
         Migrations:
     </h5>
+    <ul>
+        <li>
+            Para as migrations funcionarem é necessário primeiro criar o banco de dados,
+            Ele só cria as tabelas, a base de dados não.
+        </li>
+        <li>
+            Outro ponto importante é criar a tabela utf8md4;
+            Este é o tipo de dados que o laravel trabalha e com outros tipos de tabela já me retornou erro
+        </li>
+        <li>
+            As migrations por padrao tem um prefixo com a data de criação.
+            Em caso de problemas pode ser feito o rollback da informação de um ponto específico.
+        </li>
+    </ul>
     
 </body>
 </html>
