@@ -8,7 +8,7 @@
         <h3 class="center">Lista de Cursos</h3>
 
         <div class="row">
-            <table>
+            <table class="striped">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -27,14 +27,14 @@
                         <td>{{ $registro->descricao }}</td>
                         {{-- sempre que for trabalhar com link, utilizar o helper asset do laravel --}}
                         <td>
-                            <img width="120" src="{{ asset($registro->imagem) }}" alt="{{ $registro->titulo }}" />
+                            <img width="90" height="45" src="{{ asset($registro->imagem) }}" alt="{{ $registro->titulo }}" />
                         </td>
                         <td>{{ $registro->publicado }}</td>
                         <td>
-                            <a class="btn deep-orange" href="{{ route('admin.cursos.editar', $registro->id) }}">
+                            <a class="btn-small deep-orange" href="{{ route('admin.cursos.editar', $registro->id) }}">
                                 Editar
                             </a>
-                            <a class="btn red" href="{{ route('admin.cursos.deletar', $registro->id) }}">
+                            <a class="btn-small red" href="{{ route('admin.cursos.deletar', $registro->id) }}">
                                 Deletar
                             </a>
                         </td>
