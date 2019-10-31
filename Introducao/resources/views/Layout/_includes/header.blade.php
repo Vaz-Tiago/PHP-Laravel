@@ -12,12 +12,18 @@
         <div class="navbar-fixed">
             <nav>
 
-                <div class="nav-wrapper  light-green darken-4">
-                    <a href="#!" class="brand-logo" style="padding-left: 50px;">Curso de Laravel</a>
+                <div class="nav-wrapper  deep-orange">
+                    <a href="{{ route('site.home')}}" class="brand-logo" style="padding-left: 50px;">Curso de Laravel</a>
                     <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down" style="padding-right: 50px;">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="{{route('admin.cursos')}}">Cursos</a></li>
+                    <li><a href="{{ route('site.home')}}">Home</a></li>
+                    @if (Auth::guest())
+                        <li><a href="{{route('site.login')}}">Login</a></li>
+                    @else
+                        <li><a href="{{route('admin.cursos')}}">Cursos</a></li>
+                        <li><a href="#">{{Auth::user()->name}}</a></li>
+                        <li><a href="{{route('site.login.sair')}}">Logout</a></li>
+                    @endif
                     </ul>
                 </div>
             </nav>
@@ -25,7 +31,13 @@
             
         <ul class="sidenav" id="mobile">
             <li><a href="/">Home</a></li>
-        <li><a href="{{route('admin.cursos')}}">Cursos</a></li>
+            @if (Auth::guest())
+                <li><a href="{{route('site.login')}}">Login</a></li>
+            @else
+                <li><a href="{{route('admin.cursos')}}">Cursos</a></li>
+                <li><a href="#">{{Auth::user()->name}}</a></li>
+                <li><a href="{{route('site.login.sair')}}">Logout</a></li>
+            @endif
         </ul>
 
     </header>

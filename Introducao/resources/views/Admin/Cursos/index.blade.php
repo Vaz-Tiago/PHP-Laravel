@@ -8,7 +8,7 @@
         <h3 class="center">Lista de Cursos</h3>
 
         <div class="row">
-            <table class="striped">
+            <table class="highlight">
                 <thead>
                     <tr>
                         <th>Id</th>
