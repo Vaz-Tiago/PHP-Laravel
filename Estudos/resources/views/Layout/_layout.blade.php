@@ -3,21 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/estilo.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Estudos</title>
+    <title class="@yield('titulo')">@yield('titulo')</title>
+
 </head>
 <body>
 
     <div class="row">
-        <div class="col s2">
+        <div class="col s3">
             @include('includes.menu')
         </div>
-        <div class="col s10">
+        <div class="col s9">
             @yield('conteudo')
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.collapsible');
+            var instances = M.Collapsible.init(elems);
+        });
+
+        $pageTitle = $('title').attr('class');
+
+        switch($pageTitle)
+        {
+            case 'Laravel':
+                $("#mLaravel").attr('class', 'active');
+                break;
+            case 'AspNetCore':
+                $("#mAspNetCore").attr('class', 'active');
+                break;
+
+        }
+        
+    </script>
 </body>
 </html>

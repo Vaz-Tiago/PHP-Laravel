@@ -1,6 +1,6 @@
 @extends('Layout/_layout')
 
-@section('tituto', 'Models && Migrations')
+@section('titulo', 'Laravel')
 
 @section('conteudo')
 	

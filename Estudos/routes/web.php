@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('Layout/_layout');
 });
 
-Route::get('/models', ['as' => 'laravel.models', 'uses' => 'LaravelController@ModelsMigrations']);
+Route::get('/laravel/models', ['as' => 'laravel.models', 'uses' => 'LaravelController@ModelsMigrations']);
 
 
+Route::get('/aspnetcore/mvc', ['as' => 'AspNetCore.Mvc', 'uses' => 'AspNetCoreController@Mvc'] );
+Route::get('/aspnetcore/login', ['as' => 'AspNetCore.Login', 'uses' => 'AspNetCoreController@Login'] );
+Route::get('/aspnetcore/session', ['as' => 'AspNetCore.Session', 'uses' => 'AspNetCoreController@Session'] );
+Route::get('/aspnetcore/layout', ['as' => 'AspNetCore.Layout', 'uses' => 'AspNetCoreController@Layout'] );
