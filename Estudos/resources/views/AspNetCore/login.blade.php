@@ -7,66 +7,147 @@
     
 <h3>Login</h3>
 
-<ul class="collection with-header">
-    <li class="collection-header"> 
-        <h5> Criando e Acessando Session</h5>
-    </li>
-    <li class="collection-item">
-        <b>Setando a Session</b>
-    </li>
-    <li class="collection-item">
-        [HttpPost] //Verificação dos dados <br>
-        public IActionResult Login([FromForm] Cliente cliente) <br>
-        { <br>
-           &nbsp;&nbsp; //Como irão vir apenas o meail e a senha, não deve ser feita a verificação. <br>
-           &nbsp;&nbsp; //Pois vários campos que não serão utilizados são obrigatórios <br>
-            <br>
-           &nbsp;&nbsp; if(cliente.Email == "tiago.vaz@hotmail.com" && cliente.Senha == "123456") <br>
-           &nbsp;&nbsp; { <br>
-            &nbsp;&nbsp; &nbsp;&nbsp; //logado <br>
+<h6><b>Classe Startup</b></h6>
+<p>
+    Configuração na classe Startup: <br>
+    Dentro de ConfigureServices();
+</p>
+<div class="codigo">
+<pre wrap="true">
+<code>
+//Controles de Sessão / Login
+services.AddHttpContextAccessor(); //comando para receber pelo construtor a injeção de dependencia
+services.AddScoped<.Sessao>(); //Possibilita a injeção da classe sessão em qualquer elemento.
+services.AddScoped<.LoginCliente>();
+//Fim controle Sessão / Login
+</code>
+</pre>
+</div>
 
-            &nbsp;&nbsp; &nbsp;&nbsp; //Cria sessão <br>
-            &nbsp;&nbsp; &nbsp;&nbsp;  //Guaradar na sessão qualquer informação sobre o cliente <br>
-            &nbsp;&nbsp; &nbsp;&nbsp;  HttpContext.Session.Set("ID", new byte[] { 52 }); <br>
-            &nbsp;&nbsp; &nbsp;&nbsp;  HttpContext.Session.SetString("Email", cliente.Email); <br>
-            &nbsp;&nbsp; &nbsp;&nbsp;  HttpContext.Session.SetInt32("Idade", 25); <br>
-            <br>
-            &nbsp;&nbsp; &nbsp;&nbsp;  //Para funcionar o set String e o set int deve ser importado o namespace ASpNetCoreHttp
-            <br><br>
-            &nbsp;&nbsp; &nbsp;&nbsp; return new ContentResult() { Content = "Logado" };<br>
-            &nbsp;&nbsp;} <br>
-            &nbsp;&nbsp;else <br>
-            &nbsp;&nbsp;{ <br>
-                &nbsp;&nbsp; &nbsp;&nbsp;    //nao logado <br>
-                &nbsp;&nbsp; &nbsp;&nbsp;    return new ContentResult() { Content = "Não Logado" }; <br>
-            &nbsp;&nbsp; } <br>
+<h6><b>Libraries/Login</b></h6>
+<b>Classe LoginCliente</b>
+<p>
+    Newtonsoft.Json foi baixado via nugget. É utilizado para a serialização e desserialização, ou seja,
+    converte objetos em string e vice-versa. Nesse caso é utilizado para fazer a conversão do objeto Cliente
+    e passar para a sessão, que é iniciada no construtor.
+</p>
+
+<div class="codigo">
+<pre wrap="true">
+<code>
+using LojaVirtual.Models;
+using Newtonsoft.Json;
+
+namespace LojaVirtual.Libraries.Login
+{
+    public class LoginCliente
+    {
+        private string key = "Login.Cliente";
+        private Sessao.Sessao _sessao;
+
+        public LoginCliente(Sessao.Sessao sessao)
+        {
+            _sessao = sessao;
         }
-    </li>
-    <li class="collection-item">
-        <b>Acessando a Session </b>
-    </li>
-    <li class="collection-item">
-        [HttpGet] <br>
-        public IActionResult Painel() <br>
-        { <br>
-            &nbsp;&nbsp;//Acessando informações da sessão: <br>
-            &nbsp;&nbsp;//para pegar o valor ID, utiliza-se esse metodo. <br>
-            &nbsp;&nbsp;// Mas uma vez importado o namesapce Http, utiliza-se o GetSrting ou GetInt32 <br>
-            <br><br>
-            &nbsp;&nbsp;//TryGetValue() Precisa de dois parametros. <br>
-            <br>
-            &nbsp;&nbsp;byte[] UsuarioID; <br>
-            &nbsp;&nbsp;if (HttpContext.Session.TryGetValue("ID", out UsuarioID )) <br>
-            &nbsp;&nbsp; { <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;    return new ContentResult() { Content = "Usuario " + UsuarioID[0] + ". Logado" }; <br>
-            &nbsp;&nbsp; } <br>
-            &nbsp;&nbsp;else <br>
-            &nbsp;&nbsp;{ <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;    return new ContentResult() { Content = "Acesso Negado!" }; <br>
-            &nbsp;&nbsp;} <br>
-        } <br>
-    </li>
-</ul>
+
+        public void Login(Cliente cliente)
+        {
+            //Serialização do objeto
+            string clienteJSONString = JsonConvert.SerializeObject(cliente);
+            _sessao.Cadastrar(key, clienteJSONString);
+        }
+
+        public Cliente GetCliente()
+        {
+            //Desserialização do Objeto
+            if (_sessao.Existe(key))
+            {
+                string clienteJSONString = _sessao.Consultar(key);
+                return JsonConvert.DeserializeObject<.Cliente>(clienteJSONString);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void Logout()
+        {
+            _sessao.RemoverTodos();
+        }
+    }
+}
+</code>
+</pre>
+
+</div>
+
+
+<h6><b>HomeController</b></h6>
+<b>Recebimento de dados do formulário e encaminhamento</b>
+
+<p>
+    Dentro do HomeController é feito o recebimento e validação dos dados. Se usuário for encontrado, redireciona
+    Senão, envia mensagem de erro para a view. <br>
+    Também tem uma simulação de painel de controle, apenas para entendimento de como trabalhar com os dados que vem na sessão, 
+    e a permissão de acesso. A principío está bem rustico, tenho certeza que mais adiante no curso vou aprender uma maneira 
+    melhor de fazer navegação restrita.
+</p>
+
+<div class="codigo">
+<pre wrap="true">
+<code>
+[HttpGet]
+public IActionResult Login()
+{
+    return View();
+}
+
+
+[HttpPost]
+public IActionResult Login([FromForm] Cliente cliente)
+{
+
+    Cliente clienteDB = _repositoryCliente.Login(cliente.Email, cliente.Senha);
+
+    if(clienteDB != null)
+    {
+        _loginCliente.Login(clienteDB);
+        return new RedirectResult(Url.Action(nameof(Painel)));
+    }
+    else
+    {
+        ViewData["MSG_E"] = "Usuário não encontrado, verifique o usuário e senha digitados";
+        return View();
+    }
+}
+
+//Simulacao de painel de controlller
+[HttpGet]
+public IActionResult Painel()
+{
+    //Acessando informações da sessão:
+    //para pegar o valor ID, utiliza-se esse metodo.
+    // Mas uma vez importado o namesapce Http, utiliza-se o GetSrting ou GetInt32
+
+
+    //TryGetValue() Precisa de dois parametros.
+    Cliente cliente = _loginCliente.GetCliente();
+    if (cliente != null)
+    {
+        return new ContentResult() { Content = "Usuario " + cliente.id + ". Email: " + cliente.Email
+            + ". Idade: " + DateTime.Now.AddYears(-cliente.Nascimento.Year).ToString("yy") + ". Logado!!!"};
+    }
+    else
+    {
+        return new ContentResult() { Content = "Acesso Negado!" };
+    }
+
+}
+</code>
+</pre>
+
+</div>
 
 
 @endsection

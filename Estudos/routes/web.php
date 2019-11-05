@@ -28,6 +28,7 @@ Route::get('/aspnetcore/layout', ['as' => 'AspNetCore.Layout', 'uses' => 'AspNet
 Route::get('/aspnetcore/login', ['as' => 'AspNetCore.Login', 'uses' => 'AspNetCoreController@Login'] );
 Route::get('/aspnetcore/models', ['as' => 'AspNetCore.Models', 'uses' => 'AspNetCoreController@Models'] );
 Route::get('/aspnetcore/mvc', ['as' => 'AspNetCore.Mvc', 'uses' => 'AspNetCoreController@Mvc'] );
+Route::get('/aspnetcore/pipmid', ['as' => 'AspNetCore.PipMid', 'uses' => 'AspNetCoreController@PipMid'] );
 Route::get('/aspnetcore/razor', ['as' => 'AspNetCore.Razor', 'uses' => 'AspNetCoreController@Razor'] );
 Route::get('/aspnetcore/repository', ['as' => 'AspNetCore.Repository', 'uses' => 'AspNetCoreController@Repository'] );
 Route::get('/aspnetcore/resourcefile', ['as' => 'AspNetCore.ResourceFile', 'uses' => 'AspNetCoreController@ResourceFile'] );

@@ -42,26 +42,30 @@
         Na versão 3.0 do Core, o serviço adicionado por padrão não é o MVC, então coloquei antes do que achei
         ser o equivalente, que é o ControllerWithViews();
     </small> <br>
+<div class="codigo">
+<pre wrap="true">
+<code>
+services.AddMemoryCache() // Guarda na memória; 
+services.AddDistributedMemoryCache() 
+// Utilizado para projetos de grande porte, onde a escalabilidade é horizontal. 
+//O tráfego de dados é distribudo em vários servidores;
 
-    <b>services.AddMemoryCache()</b> -> Guarda na memória; <br>
-    <b>services.AddDistributedMemoryCache()</b> - Utilizado para projetos de grande porte, onde a escalabilidade é horizontal,
-    E os tráfego de dados é distribudo em vários servidores; <br>
-    <b>
-        Services.AddSession(option => <br>
-        {
-            //Dentro de options podemos fazer toda a configuração da sessão. <br>
-        &nbsp;&nbsp;&nbsp;&nbsp; options.IdleTimeOut 
-    </b><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-> Tempo que o usuário pode ficar inativo e o sistema mantem
-        a sessão. Inativo, neste caso, é o período sem entrar no site. O valor padrão é 20 minutos. <br>
-        Importante ressaltar que isto tem impacto direto no desempenho. Pois muitas sessões inativas, tem um impacto
-        direto nas sessões que estão ativas. <br>
-    <b>
-        &nbsp;&nbsp;&nbsp;&nbsp; options.IoTimeout ()
-    </b>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-> Tempo de espera de inatividade do navegador. <br>
-        Aqui é o tempo que o usuário esta na página inativo. <br>
-    <b>}</b> <br>
+Services.AddSession(option =>
+{
+    //Dentro de options podemos fazer toda a configuração da sessão.
+    options.IdleTimeOut
+        //Tempo que o usuário pode ficar inativo e o sistema mantem
+        //a sessão. Inativo, neste caso, é o período sem entrar no site. O valor padrão é 20 minutos.
+        //Importante ressaltar que isto tem impacto direto no desempenho. Pois muitas sessões inativas, 
+        //tem um impacto direto nas sessões que estão ativas.
+
+    options.IoTimeout ()
+    //Tempo de espera de inatividade do navegador.
+    //Aqui é o tempo que o usuário esta na página inativo.
+}
+</code>
+</pre>
+</div>
 </p>
 
 <b>Classe: Configure(); </b><br>
@@ -71,7 +75,7 @@
 </p>
 
 
-<h3>escalabilidade</h3>
+<h4>Escalabilidade</h4>
 
 <h5>É o poder de processamento do servidor.</h5>
 
@@ -94,5 +98,73 @@
     Esse problema é resolvido com o AddDistributedMemoryCache(); Que vai armazenar o cache onde vc direcionar.
 </p>
 
+<br><br>
+
+<h5><b>Libraries/Sessao</b></h5>
+
+<p>
+    Classe Utilizada para guardar as informações do usuário quando efetuar login.
+</p>
+
+<div class="codigo">
+<pre wrap="true">
+<code>
+using Microsoft.AspNetCore.Http;
+
+namespace LojaVirtual.Libraries.Sessao
+{
+    public class Sessao
+    {
+        private IHttpContextAccessor _context;
+        public Sessao(IHttpContextAccessor context)
+        {
+            _context = context;
+        }
+
+        //CRUD - Cadastrar / Atualizar / consultar / Remover - Remover Todos / Verificar se existe
+
+        public void Cadastrar(string key, string valor)
+        {
+            _context.HttpContext.Session.SetString(key, valor);
+        }
+
+        public void Atualizar(string key, string valor)
+        {
+            if(Existe(key))
+            {
+                Remover(key);
+            }
+            Cadastrar(key, valor);
+        }
+
+        public void Remover(string key)
+        {
+            _context.HttpContext.Session.Remove(key);
+        }
+
+        public string Consultar(string key)
+        {
+            return _context.HttpContext.Session.GetString(key);
+        }
+
+        public bool Existe(string key)
+        {
+            if(_context.HttpContext.Session.GetString(key) == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public void RemoverTodos()
+        {
+            _context.HttpContext.Session.Clear();
+        }
+    }
+}
+</code>
+</pre>
+</div>
 
 @endsection

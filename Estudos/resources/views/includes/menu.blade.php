@@ -23,7 +23,7 @@
             Email
          </a>
          <a href="{{route('AspNetCore.InjecaoDependencias')}}" class="btn-flat">
-            Injeção de Depemdências
+            Injeção de Dependências
          </a>
          <a href="{{route('AspNetCore.Layout')}}" class="btn-flat">
             Layout
@@ -36,6 +36,9 @@
          </a>
          <a href="{{route('AspNetCore.Mvc')}}" class="btn-flat">
             MVC
+         </a>
+         <a href="{{route('AspNetCore.PipMid')}}" class="btn-flat">
+            Pipelines e Middleware
          </a>
          <a href="{{route('AspNetCore.Razor')}}" class="btn-flat">
             Razor

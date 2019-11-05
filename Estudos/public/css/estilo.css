@@ -1,3 +1,15 @@
-a {
+a 
+{
     width: 100%;
+}
+
+.ident1
+{
+    padding-left: 20px;
+}
+.codigo
+{
+    border: solid 1px #b7b7b7;
+    background-color: #e7e4e9;
+    padding-left: 20px;
 }

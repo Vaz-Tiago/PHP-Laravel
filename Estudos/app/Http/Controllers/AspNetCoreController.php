@@ -46,6 +46,11 @@ class AspNetCoreController extends Controller
         return view('AspNetCore.Mvc');
     }
 
+    public function PipMid()
+    {
+        return view('AspNetCore.PipMid');
+    }
+
     public function Razor()
     {
         return view('AspNetCore.Razor');

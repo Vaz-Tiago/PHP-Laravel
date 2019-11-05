@@ -24,8 +24,10 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.collapsible');
-            var instances = M.Collapsible.init(elems);
+            var menus = document.querySelectorAll('.collapsible');
+            var sanfona = M.Collapsible.init(menus);
+            var material = document.querySelectorAll('.materialboxed');
+            var imgs = M.Materialbox.init(material);
         });
 
         $pageTitle = $('title').attr('class');
@@ -40,7 +42,6 @@
                 break;
 
         }
-        
     </script>
 </body>
 </html>
