@@ -12,6 +12,7 @@
     Filtros podem barrar acesso ou acrescentar recursos.
 </p>
 
+<b>Namespace: Microsoft.AspNetCore.Mvc.Filters</b>
 
 <b>Tabelas de tipos em sequência de prioridade</b>
 
@@ -19,6 +20,7 @@
     <thead>
         <tr>
             <th>Filtro</th>
+            <th>Herança</th>
             <th>Descrição</th>
         </tr>
     </thead>
@@ -27,6 +29,7 @@
             <td>
                 Autorização
             </td>
+            <td>IAuthorizationFilter</td>
             <td>
                 Verifica se o usuário atual tem autorização para a solicitação
             </td>
@@ -35,6 +38,7 @@
             <td>
                 Recurso
             </td>
+            <td>IResourceFilter</td>
             <td>
                 Pode lidar com a requisição antes dos demais filtros ou depois deles serem executados. <br>
                 Útil para fazer o cache e monitorar desempenho. <br>
@@ -45,6 +49,7 @@
             <td>
                 Ação
             </td>
+            <td>IActionFilter</td>
             <td>
                 pode executar o código antes ou depois de uma ação ser chamada.
             </td>
@@ -53,6 +58,7 @@
             <td>
                 Exceção
             </td>
+            <td>IExceptionFilter</td>
             <td>
                 Cria políticas globais de exceção antes do corpo da resposta ser gravado.
             </td>
@@ -61,6 +67,7 @@
             <td>
                 Resposta
             </td>
+            <td>IResultFilter</td>
             <td>
                 Pode executar código antes e/ou depois do resultado de uma ação. Este filtro só é executado 
                 quando a ação teve exito. Útil para a exibição ou formatação do resultado.
@@ -69,24 +76,37 @@
     </tbody>
 </table>
 
-<b>Exemplo de ActionFilter</b>
-<p>Herda de IActionFilter.</p>
+<h6><b>Libraries/Filtro/ClienteAutorizacaoAttribute</b></h6>
 
+<p>
+    O filtro é passado dentro do Controllador, acima do método que encaminha para  a área restrita. <br>
+    Como ele é o primeiro a executar no pipeline, se a condição for true ele continua o se caminho, chega até
+    o controlador, caso contrário realiza sua ação de negação. <br>
+
+    A injeção de dependência nesse caso é feita de maneira diferente, pois o filtro é utilizado como atributo. <br>
+    Deve ser chamado o serviço para aplicar a injeção, pois na hora de utilizar o atributo no controller, não é necessário ficar implementando suas dependencias
+</p>
 
 <div class="codigo">
 <pre wrap="true">
 <code>
-public class CustonActionFilter : IActionFilter
+
+namespace LojaVirtual.Libraries.Filtro
 {
-    public void OnActionExecuting(ActionExecutiongContext context)
+    public class ClienteAutorizacaoAttribute : Attribute, IAuthorizationFilter
     {
-        //Código antes de executar a action
-        //Ida
-    }
-    public void OnActionExecuted(ActionExecutedContext context)
-    {
-        //Código depois de executar a action
-        //Volta
+        LoginCliente _loginCliente;
+
+        //Implementação da interface de autorização.
+        public void OnAuthorization(AuthorizationFilterContext context)
+        {
+            _loginCliente = (LoginCliente)context.HttpContext.RequestServices.GetService(typeof(LoginCliente));
+            Cliente cliente = _loginCliente.GetCliente();
+            if (cliente == null)
+            {
+                context.Result = new ContentResult() { Content = "Acesso Negado" };
+            }
+        }
     }
 }
 </code>

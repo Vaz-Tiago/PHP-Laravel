@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class AspNetCoreController extends Controller
 {
+    public function Area()
+    {
+        return view('AspNetCore.Area');
+    }
+
     public function Controllers()
     {
         return view('AspNetCore.Controllers');
