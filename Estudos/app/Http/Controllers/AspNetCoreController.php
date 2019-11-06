@@ -21,6 +21,11 @@ class AspNetCoreController extends Controller
         return view('AspNetCore.Email');
     }
 
+    public function Filters()
+    {
+        return view('AspNetCore.Filters');
+    }
+
     public function InjecaoDependencias()
     {
         return view('AspNetCore.InjecaoDependencias');
@@ -35,6 +40,11 @@ class AspNetCoreController extends Controller
     {
         return view('AspNetCore.Login');
     }
+    
+    public function Mid()
+    {
+        return view('AspNetCore.Mid');
+    }
 
     public function Models()
     {
@@ -44,11 +54,6 @@ class AspNetCoreController extends Controller
     public function Mvc()
     {
         return view('AspNetCore.Mvc');
-    }
-
-    public function PipMid()
-    {
-        return view('AspNetCore.PipMid');
     }
 
     public function Razor()

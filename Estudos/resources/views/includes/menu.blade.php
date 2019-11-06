@@ -1,67 +1,37 @@
-<div class="container-menu">
-<ul class="collapsible" id="ulMenu">
-   <li id="mLaravel">
-      <div class="collapsible-header red darken-4 white-text"><i class="material-icons">filter_drama</i>Laravel</div>
-      <div class="collapsible-body">
-            <a href="{{route('laravel.models')}}" class="btn-flat">
-               Models | Migrations
-            </a>
-            <br>
-            <a href="#" class="btn-flat">Teste</a>
-      </div>
-   </li>
-   <li id="mAspNetCore">
-      <div class="collapsible-header blue darken-4 white-text"><i class="material-icons">border_all</i>ASP.NetCore</div>
-      <div class="collapsible-body">
-         <a href="{{route('AspNetCore.Controllers')}}" class="btn-flat">
-            Controllers
-         </a>
-         <a href="{{route('AspNetCore.Crud')}}" class="btn-flat">
-            CRUD
-         </a>
-         <a href="{{route('AspNetCore.Email')}}" class="btn-flat">
-            Email
-         </a>
-         <a href="{{route('AspNetCore.InjecaoDependencias')}}" class="btn-flat">
-            Injeção de Dependências
-         </a>
-         <a href="{{route('AspNetCore.Layout')}}" class="btn-flat">
-            Layout
-         </a>
-         <a href="{{route('AspNetCore.Login')}}" class="btn-flat">
-            Login
-         </a>
-         <a href="{{route('AspNetCore.Models')}}" class="btn-flat">
-            Models
-         </a>
-         <a href="{{route('AspNetCore.Mvc')}}" class="btn-flat">
-            MVC
-         </a>
-         <a href="{{route('AspNetCore.PipMid')}}" class="btn-flat">
-            Pipelines e Middleware
-         </a>
-         <a href="{{route('AspNetCore.Razor')}}" class="btn-flat">
-            Razor
-         </a>
-         <a href="{{route('AspNetCore.Repository')}}" class="btn-flat">
-            Repository
-         </a>
-         <a href="{{route('AspNetCore.ResourceFile')}}" class="btn-flat">
-            Resource File
-         </a>
-         <a href="{{route('AspNetCore.Rotas')}}" class="btn-flat">
-            Rotas
-         </a>
-         <a href="{{route('AspNetCore.Session')}}" class="btn-flat">
-            Session
-         </a>
-         <a href="{{route('AspNetCore.UWork')}}" class="btn-flat">
-            Unity Of Work
-         </a>
-         <a href="{{route('AspNetCore.Views')}}" class="btn-flat">
-            Views
-         </a>
-      </div>
-   </li>
-</ul>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <button data-target="AspNetCore" class="white-text btn-flat sidenav-trigger">AspNetCore</button>
+                    <button data-target="Laravel" class="white-text btn-flat sidenav-trigger">Laravel</button>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </div>
+
+<button data-target="AspNetCore" class=" btn-flat sidenav-trigger">AspNetCore</button>
+
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="#">AspNetCore</a></li>
+    <li><a href="#">Laravel</a></li>
+</ul>
+
+<ul id="AspNetCore" class="sidenav">
+    <li><div class="user-view">
+        <div class="background">
+        <img src="images/office.jpg">
+        </div>
+        <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+        <a href="#name"><span class="white-text name">John Doe</span></a>
+        <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+</ul>
+            

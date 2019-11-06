@@ -1,6 +1,6 @@
 @extends('Layout/_layout')
 
-@section('titulo', 'Asp.NetCore')
+@section('titulo', 'AspNetCore')
 
 @section('conteudo')
 	
@@ -14,14 +14,22 @@
         <b>https://site.com/controller/metodo/argumento</b><br>
     </p>
     A rota desta url ficaria assim: <br>
-    app.UseEndpoints(endpoints =>
-    {
-        endpoints.MapControllerRoute 
-        (
-            name: "default",
-            pattern: "{ controller = Home } / { action = Index } / { id? } " 
-        );
-    });
+
+<div class="codigo">
+<pre wrap="true">
+<code>
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute 
+    (
+        name: "default",
+        pattern: "{ controller = Home } / { action = Index } / { id? } " 
+    );
+});
+</code>
+</pre>
+</div>
+    
 </p>
 
 @endsection
