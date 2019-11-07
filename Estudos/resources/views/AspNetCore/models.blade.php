@@ -12,4 +12,10 @@
     entrar no nuget. add-migration "nome" - update-database <br>
 </p>
 
+<p>
+    AutoRelacionamento
+    Slug
+    Entity, Categoria separada?
+</p>
+
 @endsection

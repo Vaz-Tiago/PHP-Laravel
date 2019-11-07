@@ -60,4 +60,22 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
     especificas à aplicação que não é acessivel a um usuário comum.
 </p>
 
+<p>
+    <b>Redirecionando para outra área:</b><br>
+    Para redirecionar para outra area, deve ser instanciado um objeto anônimo como um terceiro parametro do metodo 
+    RedirectToAction() especificando a area:
+</p>
+<div class="codigo">
+<pre wrap="true">
+<code>
+[ColaboradorAutorizacao]
+public IActionResult Logout()
+{
+    _loginColaborador.Logout();
+    return RedirectToAction("Login", "Home", new { area = "" });
+}
+</code>
+</pre>
+</div>
+
 @endsection
