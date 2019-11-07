@@ -8,6 +8,7 @@ class LaravelController extends Controller
 {
     public function modelsMigrations()
     {
-        return view('Laravel/ModelsMigrations');
+        $info = ['secao' => 'Laravel', 'titulo' => 'Models && Migrations', 'submenu' => 'ModelsMigrations'];
+        return view('Laravel.ModelsMigrations', compact('info'));
     }
 }

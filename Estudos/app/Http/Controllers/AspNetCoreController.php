@@ -8,92 +8,110 @@ class AspNetCoreController extends Controller
 {
     public function Area()
     {
-        return view('AspNetCore.Area');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Area', 'submenu' => 'Area'];
+        return view('AspNetCore.Area', compact('info'));
     }
 
     public function Controllers()
     {
-        return view('AspNetCore.Controllers');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Controllers', 'submenu' => 'Controllers'];
+        return view('AspNetCore.Controllers', compact('info'));
     }
 
     public function Crud()
     {
-        return view('AspNetCore.Crud');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'CRUD', 'submenu' => 'Crud'];
+        return view('AspNetCore.Crud', compact('info'));
     }
 
     public function Email()
     {
-        return view('AspNetCore.Email');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Email', 'submenu' => 'Email'];
+        return view('AspNetCore.Email', compact('info'));
     }
 
     public function Filters()
     {
-        return view('AspNetCore.Filters');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Filters', 'submenu' => 'Filters'];
+        return view('AspNetCore.Filters', compact('info'));
     }
 
     public function InjecaoDependencias()
     {
-        return view('AspNetCore.InjecaoDependencias');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Injeção de Dependências', 'submenu' => 'InjecaoDependencias'];
+        return view('AspNetCore.InjecaoDependencias', compact('info'));
     }
 
     public function Layout()
     {
-        return view('AspNetCore.Layout');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Layout', 'submenu' => 'Layout'];
+        return view('AspNetCore.Layout', compact('info'));
     }
 
     public function Login()
     {
-        return view('AspNetCore.Login');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Login', 'submenu' => 'Login'];
+        return view('AspNetCore.Login', compact('Login'));
     }
     
     public function Mid()
     {
-        return view('AspNetCore.Mid');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Middleware', 'submenu' => 'Mid'];
+        return view('AspNetCore.Mid', compact('info'));
     }
 
     public function Models()
     {
-        return view('AspNetCore.Models');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Models', 'submenu' => 'Models'];
+        return view('AspNetCore.Models', compact('info'));
     }
 
     public function Mvc()
     {
-        return view('AspNetCore.Mvc');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Mvc', 'submenu' => 'Mvc'];
+        return view('AspNetCore.Mvc', compact('info'));
     }
 
     public function Razor()
     {
-        return view('AspNetCore.Razor');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Razor', 'submenu' => 'Razor'];
+        return view('AspNetCore.Razor', compact('info'));
     }
 
     public function Repository()
     {
-        return view('AspNetCore.Repository');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Repository', 'submenu' => 'Repository'];
+        return view('AspNetCore.Repository', compact('info'));
     }
 
     public function ResourceFile()
     {
-        return view('AspNetCore.ResourceFile');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'ResourceFile', 'submenu' => 'ResourceFile'];
+        return view('AspNetCore.ResourceFile', compact('info'));
     }
 
     public function Rotas()
     {
-        return view('AspNetCore.Rotas');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Rotas', 'submenu' => 'Rotas'];
+        return view('AspNetCore.Rotas', compact('info'));
     }
     
     public function Session()
     {
-        return view('AspNetCore.Session');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Session', 'submenu' => 'Session'];
+        return view('AspNetCore.Session', compact('info'));
     }
 
     public function UWork()
     {
-        return view('AspNetCore.UWork');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'UWork', 'submenu' => 'UWork'];
+        return view('AspNetCore.UWork', compact('info'));
     }
 
     public function Views()
     {
-        return view('AspNetCore.Views');
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Views', 'submenu' => 'Views'];
+        return view('AspNetCore.Views', compact('info'));
     }
 
 }

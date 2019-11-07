@@ -12,32 +12,23 @@
 </head>
 <body>
     @include('includes.menu')
-    <div class="container">
-        @yield('conteudo')
-    </div>
-    <!-- old
-    <div class="row">
-        <div class="col s3">
-            @//include('includes.menu')
+    <main>
+        <div class="container">
+            @yield('conteudo')
         </div>
-        <div class="col s9">
-            @//yield('conteudo')
-        </div>
-    </div>
-    -->
+    </main>
+    @include('includes.footer')
     <script src="/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            //panels
-            var menus = document.querySelectorAll('.collapsible');
-            var sanfona = M.Collapsible.init(menus);
             //img
             var material = document.querySelectorAll('.materialboxed');
             var imgs = M.Materialbox.init(material);
             //nav
             var nav = document.querySelectorAll('.sidenav');
             var side = M.Sidenav.init(nav);
+
         });
 
         $pageTitle = $('title').attr('class');

@@ -12,11 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('Layout/_layout');
+    $info = ['secao' => 'padrao', 'titulo' => 'Estante de Estudos', 'submenu' => ''];
+    return view('Layout/_layout', compact('info'));
 });
 
 //Laravel
-Route::get('/laravel/models', ['as' => 'laravel.models', 'uses' => 'LaravelController@ModelsMigrations']);
+Route::get('/laravel/modelsMigrations', ['as' => 'Laravel.ModelsMigrations', 'uses' => 'LaravelController@ModelsMigrations']);
 
 
 //AspNetCore
