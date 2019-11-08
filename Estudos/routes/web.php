@@ -43,6 +43,8 @@ Route::get('/aspnetcore/models',
     ['as' => 'AspNetCore.Models', 'uses' => 'AspNetCoreController@Models'] );
 Route::get('/aspnetcore/mvc', 
     ['as' => 'AspNetCore.Mvc', 'uses' => 'AspNetCoreController@Mvc'] );
+Route::get('/aspnetcore/paginacao', 
+    ['as' => 'AspNetCore.Paginacao', 'uses' => 'AspNetCoreController@Paginacao']);
 Route::get('/aspnetcore/razor', 
     ['as' => 'AspNetCore.Razor', 'uses' => 'AspNetCoreController@Razor'] );
 Route::get('/aspnetcore/repository', 

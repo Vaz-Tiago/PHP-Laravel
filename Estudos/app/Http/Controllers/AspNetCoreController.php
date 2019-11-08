@@ -72,6 +72,12 @@ class AspNetCoreController extends Controller
         return view('AspNetCore.Mvc', compact('info'));
     }
 
+    public function Paginacao()
+    {
+        $info = ['secao' => 'AspNetCore', 'titulo' => 'Paginação', 'submenu' => 'Paginacao'];
+        return view('AspNetCore.Paginacao', compact('info'));
+    }
+
     public function Razor()
     {
         $info = ['secao' => 'AspNetCore', 'titulo' => 'Razor', 'submenu' => 'Razor'];

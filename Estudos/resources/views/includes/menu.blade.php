@@ -40,24 +40,101 @@
     <li><a href="https://github.com/Vaz-Tiago/CursoAspNetCore" target="_blank"><i class="material-icons">cloud</i>VER NO GITHUB</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">Tópicos</a></li>
-    <li @if($info['submenu'] == 'Area')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Area')}}">Area</a></li>
-    <li @if($info['submenu'] == 'Controllers')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Controllers')}}">Controllers</a></li>
-    <li @if($info['submenu'] == 'Crud')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Crud')}}">CRUD</a></li>
-    <li @if($info['submenu'] == 'Email')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Email')}}">Email</a></li>
-    <li @if($info['submenu'] == 'Filters')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Filters')}}">Filters</a></li>
-    <li @if($info['submenu'] == 'InjecaoDependencias')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.InjecaoDependencias')}}">Injeção de Dependências</a></li>
-    <li @if($info['submenu'] == 'Layout')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Layout')}}">Layout</a></li>
-    <li @if($info['submenu'] == 'Login')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Login')}}">Login</a></li>
-    <li @if($info['submenu'] == 'Mid')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Mid')}}">Middleware</a></li>
-    <li @if($info['submenu'] == 'Models')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Models')}}">Models</a></li>
-    <li @if($info['submenu'] == 'Mvc')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Mvc')}}">MVC</a></li>
-    <li @if($info['submenu'] == 'Razor')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Razor')}}">Razor</a></li>
-    <li @if($info['submenu'] == 'Repository')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Repository')}}">Repository</a></li>
-    <li @if($info['submenu'] == 'ResourceFile')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.ResourceFile')}}">Resource File</a></li>
-    <li @if($info['submenu'] == 'Rotas')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Rotas')}}">Rotas</a></li>
-    <li @if($info['submenu'] == 'Session')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Session')}}">Session</a></li>
-    <li @if($info['submenu'] == 'UWork')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.UWork')}}">Unity Of Work</a></li>
-    <li @if($info['submenu'] == 'Views')? class="subheader active" : class="" @endif><a class="waves-effect waves-purple" href="{{route('AspNetCore.Views')}}">Views</a></li>
+    <li @if($info['submenu'] == 'Area')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Area')}}">
+            Area
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Controllers')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Controllers')}}">
+            Controllers
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Crud')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Crud')}}">
+            CRUD
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Email')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Email')}}">
+            Email
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Filters')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Filters')}}">
+            Filters
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'InjecaoDependencias')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.InjecaoDependencias')}}">
+            Injeção de Dependências
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Layout')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Layout')}}">
+            Layout
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Login')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Login')}}">
+            Login
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Mid')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Mid')}}">
+            Middleware
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Models')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Models')}}">
+            Models
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Mvc')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Mvc')}}">
+            MVC
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Paginacao')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Paginacao')}}">
+            Paginação
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Razor')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Razor')}}">
+            Razor
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Repository')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Repository')}}">
+            Repository
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'ResourceFile')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.ResourceFile')}}">
+            Resource File
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Rotas')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Rotas')}}">
+            Rotas
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Session')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Session')}}">
+            Session
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'UWork')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.UWork')}}">
+            Unity Of Work
+        </a>
+    </li>
+    <li @if($info['submenu'] == 'Views')? class="subheader active" : class="" @endif>
+        <a class="waves-effect waves-purple" href="{{route('AspNetCore.Views')}}">
+            Views
+        </a>
+    </li>
     <br><br>
 </ul>
 
