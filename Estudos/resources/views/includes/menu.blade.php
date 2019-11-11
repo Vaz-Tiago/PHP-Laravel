@@ -25,6 +25,10 @@
     <li><a href="#">Laravel</a></li>
 </ul>
 
+
+{{-- Menu Desktop AspNetCore  --}}
+
+
 <ul id="AspNetCore" class="sidenav">
     <li>
         <div class="user-view">
@@ -138,21 +142,55 @@
     <br><br>
 </ul>
 
+
+{{-- Menu Desktop Laravel --}}
+
+
+
 <ul id="Laravel" class="sidenav">
         <li>
+
             <div class="user-view">
                 <div class="background nv-background deep-orange">
             </div>
+
             <h4 class="white-text">Laravel 6.0</h4>
+
             <a href="#email">
                 <span class="white-text email">
                     tiago.vaz@hotmail.com
                 </span>
             </a>
         </li>
-        <li><a href="https://github.com/Vaz-Tiago/CursoAspNetCore" target="_blank"><i class="material-icons">cloud</i>VER NO GITHUB</a></li>
+
+        <li>
+            <a href="https://github.com/Vaz-Tiago/CursoAspNetCore" target="_blank">
+                <i class="material-icons">cloud</i>
+                VER NO GITHUB
+            </a>
+        </li>
+
         <li><div class="divider"></div></li>
+
         <li><a class="subheader">Tópicos</a></li>
-        <li @if($info['submenu'] == 'ModelsMigrations')? class="subheader active" : class="" @endif><a class="waves-effect waves-red" href="{{route('Laravel.ModelsMigrations')}}">Models && Migrations</a></li>
+
+        <li @if($info['submenu'] == 'AdminLTE')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.AdminLTE')}}">
+                AdminLTE
+            </a>
+        </li>
+
+        <li @if($info['submenu'] == 'ModelsMigrations')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.ModelsMigrations')}}">
+                Models && Migrations
+            </a>
+        </li>
+
+        <li @if($info['submenu'] == 'Seeders')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.Seeders')}}">
+                Seeders
+            </a>
+        </li>
+        
     </ul>
             

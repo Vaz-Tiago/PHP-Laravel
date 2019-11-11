@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+//Adicionado para alterar o padrao da tabela
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //Isso faz com que o campo default colunas que tem tamanho defindo é 191 e não 255;
+        Schema::defaultStringLength(191);
     }
 }

@@ -48,16 +48,17 @@
 			<h5>Criando colunas:</h5>
 		</li>
 		<li class="collection-item">
-			$table->increments('id');<br>
+			$table->BigIncrements('id');<br>
 			<small>
 				|| Cria a PK, já vem preenchido por padrão || <br>
 				|| Notei que no L6 é bigIncrements ||
 			</small>
 		</li>
 		<li class="collection-item">
-			$table->integer('user_id')->unsigned(); <br>
+			$table->unsignedBigInteger('user_id'); <br>
 			<small>
-				|| Unsigned porque esse campo vai ser chave estrangeria ||
+				|| Unsigned porque esse campo vai ser chave estrangeria - Unsigned dessa forma é para versao 5.5||<br>
+				|| Versão 5.5 do laravel é diferente: $table->integer('user_id')->unsigned(); ||
 			</small>
 		</li>
 		<li class="collection-item">
@@ -82,10 +83,52 @@
 				é necessário crir um att publico na model daquela tabela e setar como $timestamps = false ||
 			</small>
 		</li>
-		<li class="collection-item"></li>
-		<li class="collection-item"></li>
-		<li class="collection-item"></li>
 	</ul>
 </p>
+
+<h5><b>Configurações</b></h5>
+<p>
+	O modelo utf8mb4, para campos que são primary key e unique, impoe um limite de 191 caracteres, 
+	para não oter que colocar esse limite em todos os campos pk e unique, é só fazer uma alteração. <br>
+	Isso define o valor padrao de todos os campos string da tabela.
+</p>
+<br>
+<div class="codigo">
+<pre wrap="true">
+<code>
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+//Adicionado para alterar o padrao da tabela
+use Illuminate\Support\Facades\Schema;
+
+class AppServiceProvider extends ServiceProvider
+{
+	/**
+		* Register any application services.
+		*
+		* @@return void
+		*/
+	public function register()
+	{
+		//
+	}
+
+	/**
+		* Bootstrap any application services.
+		*
+		* @@return void
+		*/
+	public function boot()
+	{
+		//Isso faz com que o campo default colunas que tem tamanho defindo é 191 e não 255;
+		Sechema::defaultStringLength(191);
+	}
+}
+
+</code>
+</pre>
+</div>
 
 @endsection

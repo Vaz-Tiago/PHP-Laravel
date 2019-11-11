@@ -17,8 +17,12 @@ Route::get('/', function () {
 });
 
 //Laravel
-Route::get('/laravel/modelsMigrations', ['as' => 'Laravel.ModelsMigrations', 'uses' => 'LaravelController@ModelsMigrations']);
-
+Route::get('/laravel/modelsMigrations',
+    ['as' => 'Laravel.ModelsMigrations', 'uses' => 'LaravelController@ModelsMigrations']);
+Route::get('/laravel/seeders', 
+    ['as' => 'Laravel.Seeders', 'uses' => 'LaravelController@Seeders']);
+Route::get('/laravel/adminlte', 
+    ['as' => 'Laravel.AdminLTE', 'uses' => 'LaravelController@AdminLTE']);
 
 //AspNetCore
 Route::get('/aspnetcore/area', 
