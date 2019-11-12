@@ -179,9 +179,25 @@ return [
             'topnav' => true,
         ],
         [
-            'text'        => 'HOME',
-            'url'         => 'admin/home',
-            'icon'        => 'fas fa-home',
+            'text'      => ' HOME',
+            'url'       => 'admin/home',
+            'icon'      => 'fas fa-home',
+        ],
+        [
+            'text'      => ' CARTEIRA',
+            'icon'      => 'fas fa-wallet',
+            'submenu'   => [
+                [
+                    'text'  => 'Saldo',
+                    'url'   => 'admin/balance',
+                    'icon'  => 'fas fa-money-check-alt'
+                ],
+                [
+                    'text'  => 'Histórico',
+                    'url'   => 'admin/historic',
+                    'icon'  => 'fas fa-history'
+                ]
+            ]
         ]
     ],
 
