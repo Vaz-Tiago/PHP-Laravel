@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Balance;
+use App\Models\Historic;
 
 class User extends Authenticatable
 {
@@ -41,5 +42,13 @@ class User extends Authenticatable
     public function balance()
     {
         return $this->hasOne(Balance::class);
+    }
+
+    //criando o metdo que define uma relação um para muitos.
+    //onde 1 usuario pode ter vários históricos
+
+    public function historics()
+    {
+        return $this->hasMany(Historic::class);
     }
 }

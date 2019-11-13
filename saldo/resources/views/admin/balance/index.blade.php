@@ -14,11 +14,19 @@
 @section('content')
 <div class="container">
     <div class="container">
-        <a href="{{route('balance.deposit')}}" class="btn btn-primary">Depositar <i class="fas fa-cart-plus"></i></a>
-        <a href="" class="btn btn-danger">Sacar <i class="fas fa-cart-arrow-down"></i></a>
+        <a href="{{ route('balance.deposit') }}" class="btn btn-secondary">Depositar <i class="fas fa-cart-plus"></i></a>
+        
+        @if ($amount > 0)
+            <a href="{{ route('balance.withdraw') }}" class="btn btn-dark">
+                Sacar
+                <i class="fas fa-cart-arrow-down"></i>
+            </a>
+        @endif
+
     </div>
     <br>
-    <div class="small-box bg-green">
+    @include('admin.includes.alerts')
+    <div class="small-box bg-gradient-green">
         <div class="inner">
         <h3>R$ {{ number_format( $amount, 2, '.', '') }}</h3>
         </div>
