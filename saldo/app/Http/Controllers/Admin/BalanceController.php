@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Balance;
+use App\User;
 use App\Http\Requests\MoneyValidationFormRequest;
 
 class BalanceController extends Controller
@@ -69,5 +70,55 @@ class BalanceController extends Controller
                     ->back()
                     ->with('error', $response['message']);
 
+    }
+
+
+    public function transfer()
+    {
+        return view('admin.balance.transfer');
+    }
+
+    public function confirmTransfer(Request $request, User $user)
+    {
+        if (!$sender = $user->getSender($request->sender))
+        {
+            return redirect()
+                    ->back()
+                    ->with('error', 'Usuário informado não foi encontrado');
+        }
+        
+        //Evitando que faça uma transferencia para si próprio: 
+        if ($sender->id === auth()->user()->id)
+        {
+            return redirect()
+                    ->back()
+                    ->with('error', 'Utilize o depósito para transferir para a própria conta');
+        }
+
+        $balance = auth()->user()->balance;
+        return view('admin.balance.confirm-transfer', compact('sender', 'balance'));
+    }
+
+
+
+    public function transferStore(MoneyValidationFormRequest $request, User $user)
+    {
+        if(!$sender= $user->find($request->senderId))
+        {
+            return redirect()
+                        ->route('balance.transfer')
+                        ->with('success', 'Recebedor não encontrado!');
+        }
+        $balance = auth()->user()->balance()->firstOrCreate([]);
+        $response = $balance->transfer($request->value, $sender);
+
+        if($response['success'])
+            return redirect()
+                        ->route('admin.balance')
+                        ->with('success', $response['message']);
+        
+        return redirect()
+                    ->route('balance.transfer')
+                    ->with('error', $response['message']);
     }
 }

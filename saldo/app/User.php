@@ -51,4 +51,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Historic::class);
     }
+
+    public function getSender($sender)
+    {
+        //Entendendo a pesquisa: 
+        //$this já se refere a está tabela
+        //->where(): coluna name, o tipo de filtro, no caso foi o LIKE, e o valor procurado
+        //->orWhere(): Equivale ao OR da query, onde é feita a busca no campo email, ao não informar o tipo da busca,
+        //o laravel já entende que é  '=' (igual)
+        //->get(): pega o valor que foi encontrado
+        //->first(): seleciona só o primeiro registro.  
+        return $this->where('name', 'LIKE', "%$sender%")
+                    ->orWhere('email', $sender)
+                    ->get()
+                    ->first();
+
+    }
 }

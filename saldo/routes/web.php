@@ -13,6 +13,10 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
     Route::get('withdraw', ['as' => 'balance.withdraw', 'uses' => 'BalanceController@withdraw']);
     Route::post('withdraw', ['as' => 'withdraw.store', 'uses' => 'BalanceController@withdrawStore']);
 
+    Route::get('transfer', ['as' => 'balance.transfer', 'uses' => 'BalanceController@transfer']);
+    Route::post('confirm-transfer', ['as' => 'confirm.transfer', 'uses' => 'BalanceController@confirmTransfer']);
+    Route::post('transfer', ['as' => 'transfer.store', 'uses' => 'BalanceController@transferStore']);
+
 });
 
 

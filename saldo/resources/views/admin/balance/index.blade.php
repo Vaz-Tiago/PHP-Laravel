@@ -14,19 +14,30 @@
 @section('content')
 <div class="container">
     <div class="container">
-        <a href="{{ route('balance.deposit') }}" class="btn btn-secondary">Depositar <i class="fas fa-cart-plus"></i></a>
+        <a href="{{ route('balance.deposit') }}" class="btn btn-success">
+            <i class="far fa-plus-square"></i>
+            &nbsp;
+            Depositar 
+        </a>
         
         @if ($amount > 0)
-            <a href="{{ route('balance.withdraw') }}" class="btn btn-dark">
+            <a href="{{ route('balance.withdraw') }}" class="btn btn-danger">
+                <i class="far fa-minus-square"></i>
+                &nbsp;
                 Sacar
-                <i class="fas fa-cart-arrow-down"></i>
+            </a>
+
+            <a href="{{ route('balance.transfer') }}" class="btn btn-info">
+                <i class="fas fa-exchange-alt"></i>
+                &nbsp;
+                Transferir
             </a>
         @endif
 
     </div>
     <br>
     @include('admin.includes.alerts')
-    <div class="small-box bg-gradient-green">
+    <div class="small-box bg-gradient-gray">
         <div class="inner">
         <h3>R$ {{ number_format( $amount, 2, '.', '') }}</h3>
         </div>
