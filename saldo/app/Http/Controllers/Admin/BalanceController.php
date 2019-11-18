@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Balance;
+use App\Models\Historic;
 use App\User;
 use App\Http\Requests\MoneyValidationFormRequest;
 
 class BalanceController extends Controller
 {
+    //Atribut de paginação
+    private $totalPage = 2;
+
+
     public function index()
     {
         $balance = auth()->user()->balance;
@@ -120,5 +125,35 @@ class BalanceController extends Controller
         return redirect()
                     ->route('balance.transfer')
                     ->with('error', $response['message']);
+    }
+
+    public function historics(Historic $historics)
+    {
+
+        //Paginação:
+        //->get() Retorna todos os registros
+        //$historic = auth()->user()->historics()->with(['userSender'])->get();
+
+        //Por padrão a paginação traz 10 registros por página.
+        //Um modo interessante que deixa o código mais legivel é colocar o numero de página poginadas em um atributo da classe
+        $historic = auth()->user()
+                                ->historics()
+                                ->with(['userSender'])
+                                ->paginate($this->totalPage);
+
+        $types = $historics->type();
+
+        return view('admin.balance.historics', compact('historic', 'types'));
+    }
+
+    public function searchHistoric(Request $request, Historic $historics)
+    {
+        $dataForm = $request->except('_token');
+        $historic = $historics->search($dataForm, $this->totalPage);
+
+        $types = $historics->type();
+
+        return view('admin.balance.historics', compact('historic', 'types', 'dataForm'));
+
     }
 }

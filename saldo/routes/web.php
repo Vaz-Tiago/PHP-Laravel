@@ -4,6 +4,9 @@
 //namespace => Admin é para não ter que ficar esecificando a pasta que esta o controller, pois vai buscar todos nesta pasta
 Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', ['as' => 'admin.home', 'uses' => 'AdminController@index']);
+
+    Route::get('historic', ['as' => 'admin.historic', 'uses' => 'BalanceController@historics']);
+    Route::any('historic-search', ['as' => 'historic.search', 'uses' => 'balanceController@searchHistoric']);
     
     Route::get('balance', ['as' => 'admin.balance', 'uses' => 'BalanceController@index']);
     
