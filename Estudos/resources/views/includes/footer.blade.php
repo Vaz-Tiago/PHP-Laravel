@@ -5,8 +5,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col s12">
-                        <h5 class="black-text">Organizando o Conhecimento</h5>
-                        <p class="grey-text">Anotações de cursos que fiz em páginas web para facilitar minhas pesquisas futuras!!!</p>
+                        <h5 class="white-text">Organizando o Conhecimento</h5>
+                        <p class="white-text">Anotações de cursos que fiz em páginas web para facilitar minhas pesquisas futuras!!!</p>
                     </div>
                 </div>
             </div>
@@ -41,8 +41,8 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <h5 class="black-text">Organizando o Conhecimento</h5>
-                    <p class="grey-text">Anotações de cursos que fiz em páginas web para facilitar minhas pesquisas futuras!!!</p>
+                    <h5 class="white-text">Organizando o Conhecimento</h5>
+                    <p class="white-text">Anotações de cursos que fiz em páginas web para facilitar minhas pesquisas futuras!!!</p>
                 </div>
             </div>
         </div>

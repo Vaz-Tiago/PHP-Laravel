@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class AspNetCoreController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
     public function Area()
     {
         $info = ['secao' => 'AspNetCore', 'titulo' => 'Area', 'submenu' => 'Area'];

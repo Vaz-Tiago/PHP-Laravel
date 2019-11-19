@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class LaravelController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
     public function AdminLTE()
     {
         $info = 
