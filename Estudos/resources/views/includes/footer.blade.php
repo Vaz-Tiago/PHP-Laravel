@@ -1,3 +1,4 @@
+<div class="ajuste50px"></div>
 @switch($info['secao'])
     @case('AspNetCore')
         <footer class="page-footer deep-purple lighten-4">

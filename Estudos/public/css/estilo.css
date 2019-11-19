@@ -6,7 +6,7 @@
 {
     border: solid 1px #b7b7b7;
     background-color: #e7e4e9;
-    padding: 20px;
+    padding: 20px 10px;
 }
 
 body 
@@ -26,6 +26,7 @@ main
 	  border: solid 1px #000;
 	  float: right;
 	  padding: 20px;
+	  width: 30%;
 }
 .borderedFull
 {
@@ -34,4 +35,9 @@ main
 	  padding: 20px;
 	  width: 100%;
 	  background-color: #e6e6e6;
+}
+
+.ajuste50px
+{
+	margin-top: 50px;
 }

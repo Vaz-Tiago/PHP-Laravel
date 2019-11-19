@@ -39,8 +39,8 @@
 </p>
 
 <div class="codigo">
-<pre wrap="true">
 <code>
+<pre wrap="true">
 mix 
     .styles([
         'listaArquivosCss'
@@ -51,8 +51,8 @@ mix
     ], 'caminhoPublicJs')
 
     .version();
-</code>
 </pre>
+</code>
 </div>
 
 <p>
