@@ -5,8 +5,6 @@
 @section('conteudo')
 	
 
-<h3>Models & Migrations</h3>
-
 <h4>Criando via artisan</h4>
 <p>
 	Para fazer a migrations, é necessário que o banco de dados já esteja criado (Caso estiver sendo utilizado Mysql). <br>

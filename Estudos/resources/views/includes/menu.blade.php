@@ -164,7 +164,7 @@
         </li>
 
         <li>
-            <a href="https://github.com/Vaz-Tiago/CursoAspNetCore" target="_blank">
+            <a href="https://github.com/Vaz-Tiago/CursoLaravel" target="_blank">
                 <i class="material-icons">cloud</i>
                 VER NO GITHUB
             </a>
@@ -180,9 +180,45 @@
             </a>
         </li>
 
-        <li @if($info['submenu'] == 'ModelsMigrations')? class="subheader active" : class="" @endif>
-            <a class="waves-effect waves-red" href="{{route('Laravel.ModelsMigrations')}}">
-                Models && Migrations
+        <li @if($info['submenu'] == 'Assets')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.Assets')}}">
+                Assets
+            </a>
+        </li>
+
+        <li @if($info['submenu'] == 'Filtros')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.Filtros')}}">
+                Filtros
+            </a>
+        </li>
+
+        <li @if($info['submenu'] == 'Login')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.Login')}}">
+                Login
+            </a>
+        </li>
+
+        <li @if($info['submenu'] == 'Migrations')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.Migrations')}}">
+                Migrations
+            </a>
+        </li>
+
+        <li @if($info['submenu'] == 'Models')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.Models')}}">
+                Models
+            </a>
+        </li>
+
+        <li @if($info['submenu'] == 'Paginacao')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.Paginacao')}}">
+                Paginação
+            </a>
+        </li>
+        
+        <li @if($info['submenu'] == 'Rotas')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.Rotas')}}">
+                Rotas
             </a>
         </li>
 
@@ -191,6 +227,18 @@
                 Seeders
             </a>
         </li>
-        teste
+
+        <li @if($info['submenu'] == 'validacaoFormulario')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.ValidacaoFormulario')}}">
+                Validação Formulário
+            </a>
+        </li>
+
+        <li @if($info['submenu'] == 'Verbos')? class="subheader active" : class="" @endif>
+            <a class="waves-effect waves-red" href="{{route('Laravel.Verbos')}}">
+                Verbos
+            </a>
+        </li>
+
     </ul>
             

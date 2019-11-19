@@ -16,50 +16,193 @@ Route::get('/', function () {
     return view('Layout/_layout', compact('info'));
 });
 
+
 //Laravel
-Route::get('/laravel/modelsMigrations',
-    ['as' => 'Laravel.ModelsMigrations', 'uses' => 'LaravelController@ModelsMigrations']);
-Route::get('/laravel/seeders', 
-    ['as' => 'Laravel.Seeders', 'uses' => 'LaravelController@Seeders']);
-Route::get('/laravel/adminlte', 
-    ['as' => 'Laravel.AdminLTE', 'uses' => 'LaravelController@AdminLTE']);
+Route::group(['prefix' => 'laravel'], function(){
+
+    Route::get('adminlte', 
+    [
+        'as'    => 'Laravel.AdminLTE', 
+        'uses'  => 'LaravelController@AdminLTE'
+    ]);
+
+    Route::get('assets', 
+    [
+        'as'    => 'Laravel.Assets', 
+        'uses'  => 'LaravelController@Assets'
+    ]);
+
+    Route::get('filtros', 
+    [
+        'as'    => 'Laravel.Filtros', 
+        'uses'  => 'LaravelController@Filtros'
+    ]);
+
+    Route::get('login', 
+    [
+        'as'    => 'Laravel.Login', 
+        'uses'  => 'LaravelController@Login'
+    ]);
+
+    Route::get('migrations', 
+    [
+        'as'    => 'Laravel.Migrations', 
+        'uses'  => 'LaravelController@Migrations'
+    ]);
+
+    Route::get('models',
+    [
+        'as'    => 'Laravel.Models',
+        'uses'  => 'LaravelController@Models'
+    ]);
+
+    Route::get('paginacao',
+    [
+        'as'    => 'Laravel.Paginacao',
+        'uses'  => 'LaravelController@Paginacao'
+    ]);
+
+    Route::get('rotas',
+    [
+        'as'    => 'Laravel.Rotas',
+        'uses'  => 'LaravelController@Rotas'
+    ]);
+
+    Route::get('seeders', 
+    [
+        'as'    => 'Laravel.Seeders',
+        'uses'  => 'LaravelController@Seeders'
+    ]);
+
+    Route::get('validacaoFormulario', 
+    [
+        'as'    => 'Laravel.ValidacaoFormulario',
+        'uses'  => 'LaravelController@ValidacaoFormulario'
+    ]);
+
+    Route::get('verbos', 
+    [
+        'as'    => 'Laravel.Verbos',
+        'uses'  => 'LaravelController@Verbos'
+    ]);
+});
+
+
 
 //AspNetCore
-Route::get('/aspnetcore/area', 
-    ['as' => 'AspNetCore.Area', 'uses' => 'AspNetCoreController@Area'] );
-Route::get('/aspnetcore/controllers', 
-    ['as' => 'AspNetCore.Controllers', 'uses' => 'AspNetCoreController@Controllers'] );
-Route::get('/aspnetcore/crud', 
-    ['as' => 'AspNetCore.Crud', 'uses' => 'AspNetCoreController@Crud'] );
-Route::get('/aspnetcore/email', 
-    ['as' => 'AspNetCore.Email', 'uses' => 'AspNetCoreController@Email'] );
-Route::get('/aspnetcore/filters', 
-    ['as' => 'AspNetCore.Filters', 'uses' => 'AspNetCoreController@Filters'] );
-Route::get('/aspnetcore/inecaodependencias', 
-    ['as' => 'AspNetCore.InjecaoDependencias', 'uses' => 'AspNetCoreController@InjecaoDependencias'] );
-Route::get('/aspnetcore/layout', 
-    ['as' => 'AspNetCore.Layout', 'uses' => 'AspNetCoreController@Layout'] );
-Route::get('/aspnetcore/login', 
-    ['as' => 'AspNetCore.Login', 'uses' => 'AspNetCoreController@Login'] );
-Route::get('/aspnetcore/mid', 
-    ['as' => 'AspNetCore.Mid', 'uses' => 'AspNetCoreController@Mid'] );
-Route::get('/aspnetcore/models', 
-    ['as' => 'AspNetCore.Models', 'uses' => 'AspNetCoreController@Models'] );
-Route::get('/aspnetcore/mvc', 
-    ['as' => 'AspNetCore.Mvc', 'uses' => 'AspNetCoreController@Mvc'] );
-Route::get('/aspnetcore/paginacao', 
-    ['as' => 'AspNetCore.Paginacao', 'uses' => 'AspNetCoreController@Paginacao']);
-Route::get('/aspnetcore/razor', 
-    ['as' => 'AspNetCore.Razor', 'uses' => 'AspNetCoreController@Razor'] );
-Route::get('/aspnetcore/repository', 
-    ['as' => 'AspNetCore.Repository', 'uses' => 'AspNetCoreController@Repository'] );
-Route::get('/aspnetcore/resourcefile', 
-    ['as' => 'AspNetCore.ResourceFile', 'uses' => 'AspNetCoreController@ResourceFile'] );
-Route::get('/aspnetcore/rotas', 
-    ['as' => 'AspNetCore.Rotas', 'uses' => 'AspNetCoreController@Rotas']);
-Route::get('/aspnetcore/session', 
-    ['as' => 'AspNetCore.Session', 'uses' => 'AspNetCoreController@Session'] );
-Route::get('/aspnetcore/uwork', 
-    ['as' => 'AspNetCore.UWork', 'uses' => 'AspNetCoreController@UWork'] );
-Route::get('/aspnetcore/views', 
-    ['as' => 'AspNetCore.Views', 'uses' => 'AspNetCoreController@Views'] );
+Route::group(['prefix' => 'aspnetcore'], function (){
+    Route::get('area', 
+    [
+        'as'    => 'AspNetCore.Area', 
+        'uses'  => 'AspNetCoreController@Area'
+    ]);
+    
+    Route::get('controllers', 
+    [
+        'as'    => 'AspNetCore.Controllers',
+        'uses'  => 'AspNetCoreController@Controllers'
+    ]);
+
+    Route::get('crud', 
+    [
+        'as'    => 'AspNetCore.Crud',
+        'uses'  => 'AspNetCoreController@Crud'
+    ]);
+
+    Route::get('email', 
+    [
+        'as' => 'AspNetCore.Email', 
+        'uses' => 'AspNetCoreController@Email'
+    ]);
+
+    Route::get('filters', 
+    [
+        'as'    => 'AspNetCore.Filters',
+        'uses'  => 'AspNetCoreController@Filters'
+    ]);
+
+    Route::get('inecaodependencias', 
+    [
+        'as'    => 'AspNetCore.InjecaoDependencias',
+        'uses'  => 'AspNetCoreController@InjecaoDependencias'
+    ]);
+
+    Route::get('/aspnetcore/layout', 
+    [
+        'as'    => 'AspNetCore.Layout',
+        'uses'  => 'AspNetCoreController@Layout'
+    ]);
+    
+    Route::get('/aspnetcore/login', 
+    [
+        'as'    => 'AspNetCore.Login',
+        'uses'  => 'AspNetCoreController@Login'
+    ]);
+
+    Route::get('/aspnetcore/mid', 
+    [
+        'as'    => 'AspNetCore.Mid',
+        'uses'  => 'AspNetCoreController@Mid'
+    ]);
+
+    Route::get('/aspnetcore/models', 
+    [
+        'as'    => 'AspNetCore.Models',
+        'uses'  => 'AspNetCoreController@Models'
+    ]);
+
+    Route::get('/aspnetcore/mvc', 
+    [
+        'as'    => 'AspNetCore.Mvc',
+        'uses'  => 'AspNetCoreController@Mvc'
+    ]);
+
+    Route::get('/aspnetcore/paginacao', 
+    [
+        'as'    => 'AspNetCore.Paginacao',
+        'uses'  => 'AspNetCoreController@Paginacao'
+    ]);
+
+    Route::get('/aspnetcore/razor', 
+    [
+        'as'    => 'AspNetCore.Razor',
+        'uses'  => 'AspNetCoreController@Razor'
+    ]);
+
+    Route::get('/aspnetcore/repository', 
+    [
+        'as'    => 'AspNetCore.Repository',
+        'uses'  => 'AspNetCoreController@Repository'
+    ]);
+
+    Route::get('/aspnetcore/resourcefile', 
+    [
+        'as'    => 'AspNetCore.ResourceFile',
+        'uses'  => 'AspNetCoreController@ResourceFile'
+    ]);
+
+    Route::get('/aspnetcore/rotas', 
+    [
+        'as'    => 'AspNetCore.Rotas',
+        'uses'  => 'AspNetCoreController@Rotas'
+    ]);
+
+    Route::get('/aspnetcore/session', 
+    [
+        'as'    => 'AspNetCore.Session',
+        'uses'  => 'AspNetCoreController@Session'
+    ]);
+
+    Route::get('/aspnetcore/uwork', 
+    [
+        'as'    => 'AspNetCore.UWork',
+        'uses'  => 'AspNetCoreController@UWork'
+    ]);
+
+    Route::get('/aspnetcore/views', 
+    [
+        'as'    => 'AspNetCore.Views',
+        'uses'  => 'AspNetCoreController@Views'
+    ]);
+    
+});
